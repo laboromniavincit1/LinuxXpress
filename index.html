@@ -1,0 +1,65 @@
+<script>
+function run() {
+		var cn= document.getElementById("cname").value
+		var ci= document.getElementById("cimage").value
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("crun").innerHTML =
+    this.responseText;
+  }
+  xhttp.open("GET", "http://35.154.75.150:3000/run?cname=" + cn + "&cimage=" +  ci);
+  xhttp.send();
+}
+
+function cps() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("cps").innerHTML =
+    this.responseText;
+  }
+  xhttp.open("GET", "http://35.154.75.150:3000/ps");
+  xhttp.send();
+}
+
+function livecmd() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("livecmd").innerHTML =
+    this.responseText;
+  }
+  xhttp.open("GET", "http://35.154.75.150:3000/cmd");
+  xhttp.send();
+}
+
+function del() {
+		var del = document.getElementById("cdname").value;
+
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("del").innerHTML =
+    this.responseText;
+  }
+  xhttp.open("GET", "http://35.154.75.150:3000/del?cdname=" + del);
+  xhttp.send();
+}
+
+</script>
+<h1> Launch Conatiner </h1>
+	Name <input name="cname" id="cname"/>
+	<br/>
+	Image Name
+	<select name="cimage" id="cimage"/>
+		<option> centos <option/>
+		<option> ubuntu <option/>
+	<select/>
+	<br/>
+	<div id="crun">Click here to launch </div>
+	<button onclick="run()"> Click Here</button>
+	<button onclick="cps()"> Refresh </button>
+	<button onclick="cps()">Click to show </button>
+        <div id ="cps" >This is my container list </div>
+	Coantainer Name<input id="cdname" name="cdname"/></br>
+	<div id="del"></div>
+	<button onclick="del()"> Stop container</button></br>
+	<button onclick="livecmd()" > Launch terminal </button>
+	<div id="livecmd"> </button>

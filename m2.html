@@ -1,0 +1,175 @@
+<html>
+
+<head>
+  <script>
+    function run() {
+      var cn = document.getElementById("cname").value
+      var ci = document.getElementById("cimage").value
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("crun").innerHTML =
+          this.responseText;
+      }
+      xhttp.open("GET", "http://localhost:3000/run?cname=" + cn + "&cimage=" + ci);
+      xhttp.send();
+    }
+
+    function cps() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("cps").innerHTML =
+          this.responseText;
+      }
+      xhttp.open("GET", "http://localhost:3000/ps");
+      xhttp.send();
+    }
+
+    function livecmd() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("livecmd").innerHTML =
+          this.responseText;
+      }
+      xhttp.open("GET", "http://35.154.75.150:3000/cmd");
+      xhttp.send();
+    }
+
+    function del() {
+      var del = document.getElementById("cdname").value;
+
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("del").innerHTML =
+          this.responseText;
+      }
+      xhttp.open("GET", "http://localhost:3000/del?cdname=" + del);
+      xhttp.send();
+    }
+
+
+
+
+
+
+
+    function send() {
+      var cmd = document.getElementById("cmd").value;
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("d1").innerHTML =
+          this.responseText;
+      }
+      xhttp.open("GET", "http://localhost:3000/comman?cmd=" + cmd);
+      xhttp.send();
+    }
+
+    function deleteall() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("deleteall").innerHTML =
+          this.responseText;
+      }
+      xhttp.open("GET", "http://localhost:3000/deleteall");
+      xhttp.send();
+    }
+
+    function cpullos() {
+      var cpullos = document.getElementById("cpullos").value;
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("cpullosoutput").innerHTML =
+          this.responseText;
+      }
+      xhttp.open("GET", "http://localhost:3000/cpullos?cpullos=" + cpullos);
+      xhttp.send();
+    }
+
+    function allpulledimages() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("allpulledimages").innerHTML =
+          this.responseText;
+      }
+      xhttp.open("GET", "http://localhost:3000/allpulledimages");
+      xhttp.send();
+    }
+
+    function cidelete() {
+      var cidelete = document.getElementById("cidelete").value;
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("cido").innerHTML =
+          this.responseText;
+      }
+      xhttp.open("GET", "http://localhost:3000/cidelete?cidelete=" + cidelete);
+      xhttp.send();
+    }
+
+  </script>
+
+</head>
+
+
+
+
+
+<body>
+  <div class="d1">
+    <h1> hell</h1>
+  </div><br />
+  <div class="d2">
+    Name <input name="cname" id="cname" /><br />
+    Image Name
+    <input name="cimage" id="cimage" />
+    <br />
+    Click here to launch <button onclick="run()" id="b1"> Click Here</button>
+    <div id="crun"> </div>
+  </div>
+  <div class="d3"> This is my container list <br />
+    <button onclick="cps()"> Refresh </button>
+    <button onclick="cps()">Click to show </button>
+    <div id="cps"> </div>
+  </div>
+  <!--  <div id ="cps" >This is my container list </div -->
+
+
+
+
+  <div class="ter">
+
+    <button onclick="livecmd()" style="font-size : medium"> Launch terminal </button><br />
+    <h1>Live CMD</h1>
+    <pre><div id="d1"  > waiting.... </div></pre>
+    <form>
+      Command: <input id="cmd" , name="cmd" />
+      <input type="button" value="run" onclick="send()" />
+    </form>
+
+
+    <div id="livecmd"></div>
+
+  </div>
+
+  </div>
+  <div class="d4">
+    Container Name<input id="cdname" name="cdname" />
+    <button onclick="del()"> Stop container</button></br>
+    <div id="del"></div>
+  </div>
+  <button onclick="deleteall()">Delete All</button></br>
+  <div id="deleteall"></div>
+
+  Image Name:<input id="cpullos" name="cpullos" />
+  <button onclick="cpullos()">Pull</button></br>
+  <div id="cpullosoutput"></div>
+
+  <button onclick="allpulledimages()">Show All Pulled Images </button>
+  <pre><div id="allpulledimages"> </div></pre>
+</body>
+
+Image Name :<input id="cidelete" name="cidelete" />
+<button onclick="cidelete()">Delete Image</button>
+<div id="cido"></div>
+
+
+</html>

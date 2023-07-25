@@ -24,7 +24,7 @@ while (tryy <= 2):
                 Press 6 : Delete a User
                 Press 7 : Change Password of a User
                 Press 8 : Configure Web Server
-                Press 9 : 
+                Press 9 : DockEase
                 Press 10: Exit 
                 """)
                 choice = input("Enter your choice : ")
@@ -52,7 +52,7 @@ while (tryy <= 2):
                     os.system("sudo dnf install httpd")
                     os.system("sudo systemctl start httpd")
                 elif choice == '9':
-                    os.system("ifconfig")
+                    os.system("node server.js")
                 elif choice == '10':
                     exit()
                 else:
@@ -73,7 +73,7 @@ while (tryy <= 2):
                 Press 6 : Delete a User
                 Press 7 : Change Password of a User
                 Press 8 : Configure Web Server
-                Press 9 : 
+                Press 9 : DockEase
                 Press 10: Exit 
                 """)
                 choice = input("Enter your choice : ")

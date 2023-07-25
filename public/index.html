@@ -1,0 +1,331 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="/index.css" type="text/css">
+  <link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <script>
+    function run() {
+      var cn = document.getElementById("cname").value
+      var ci = document.getElementById("cimage").value
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("containerid").value =
+          this.responseText;
+      }
+      xhttp.open("GET", "http://localhost:3000/run?cname=" + cn + "&cimage=" + ci);
+      xhttp.send();
+    }
+
+    function cps() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("cps").innerHTML =
+          this.responseText;
+      }
+      xhttp.open("GET", "http://localhost:3000/ps");
+      xhttp.send();
+    }
+
+    function livecmd() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("livecmd").innerHTML =
+          this.responseText;
+      }
+      xhttp.open("GET", "http://35.154.75.150:3000/cmd");
+      xhttp.send();
+    }
+
+    function del() {
+      var del = document.getElementById("cdname").value;
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("del").innerHTML =
+          this.responseText;
+      }
+      xhttp.open("GET", "http://localhost:3000/del?cdname=" + del);
+      xhttp.send();
+    }
+
+    function send() {
+      var cmd = document.getElementById("cmd").value;
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("d1").innerHTML =
+          this.responseText;
+      }
+      xhttp.open("GET", "http://localhost:3000/comman?cmd=" + cmd);
+      xhttp.send();
+    }
+
+    function deleteall() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("cido").innerHTML =
+          this.responseText;
+      }
+      xhttp.open("GET", "http://localhost:3000/deleteall");
+      xhttp.send();
+    }
+
+    function cpullos() {
+      var cpullos = document.getElementById("cpullos").value;
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("cpullosoutput").innerHTML =
+          this.responseText;
+      }
+      xhttp.open("GET", "http://localhost:3000/cpullos?cpullos=" + cpullos);
+      xhttp.send();
+    }
+
+    function allpulledimages() {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        // var allpulledimages = this.responseText;
+        // console.log(allpulledimages);
+        document.getElementById("allpulledimages").innerHTML =
+          this.responseText;
+      }
+      xhttp.open("GET", "http://localhost:3000/allpulledimages");
+      xhttp.send();
+    }
+
+    function clearpulledimages() {
+      document.getElementById("allpulledimages").innerHTML = "";
+    }
+
+    function clear2() {
+      document.getElementById("cpullos").value = "";
+      document.getElementById("cpullosoutput").innerHTML = "";
+    }
+
+    function cidelete() {
+      var cidelete = document.getElementById("cidelete").value;
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("cido").innerHTML =
+          this.responseText;
+      }
+      xhttp.open("GET", "http://localhost:3000/cidelete?cidelete=" + cidelete);
+      xhttp.send();
+    }
+  </script>
+
+  <script>
+    function sendCommand() {
+      var cmd = document.getElementById("eterminal-input").value;
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("terminal-output").innerHTML =
+          this.responseText;
+      }
+      xhttp.open("GET", "http://localhost:3000/comman?cmd=" + cmd);
+      xhttp.send();
+    }
+  </script>
+
+
+</head>
+
+<body>
+  <div class="headtitle">
+    <h1 id="title">DOCKEASE</h1>
+  </div>
+  <br />
+
+  <div class="container p-3">
+    <div class="card border-primary p-3">
+      <div class="">
+        <button onclick="allpulledimages()" class="btn btn-primary m-1 ">Pulled Images</button>
+        <button onclick="clearpulledimages()" class="btn btn-secondary m-1 ">Close</button>
+
+        <div class="form-floating">
+          <textarea class="form-control" id="allpulledimages" placeholder="Leave a comment here"
+            style="width : 100%; height : 150px "></textarea>
+          <label for="floatingTextarea2"></label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--
+  <div class="downloadimg">
+    <div class="downloadimg1">
+      <div class="downloadimg2">
+        <div class="downloadimg3">
+          Enter Image Name:
+        </div>
+        <input id="cpullos" name="cpullos" type="text" />
+      </div>
+      <div class="downloadimg4">
+        <button onclick="cpullos()">Pull</button>
+        <button onclick="clear2()">Clear</button>
+      </div>
+      <div id="cpullosoutput"> </div>
+"cname" id="cname" type="text" /><br /></div>
+      <div class="runimg4">Image Name:
+        <input name="cimage" id="cimage" type="text" />
+        <br />
+      </div>
+      <div class="runimg5">
+        <button onclick="run()" id="b1">Launch Conatiner</button>
+      </div>
+      <div class="runimg6">
+        Container ID:
+        <input id="containerid" type="text" readonly>
+        </input>
+
+    </div>
+  </div>
+
+  <div class="clist"> This is my container list <br />
+    <button onclick="cps()"> Refresh </button>
+    <button onclick="cps()">Click to show </button>
+    <div id="cps"> </div>
+  </div>
+
+  <!--  <div id ="cps" >This is my container list </div -->
+
+  <!-- <div class="ter">
+
+    <button onclick="livecmd()" style="font-size : medium"> Launch terminal </button><br />
+    <h1>Live CMD</h1>
+    <pre><div id="d1"  > waiting.... </div></pre>
+    <form>
+      Command: <input id="cmd" , name="cmd" />
+      <input type="button" value="run" onclick="send()" />
+    </form>
+
+  <div id="livecmd"></div> -->
+
+  <!-- </div>
+
+  </div>
+
+  <div class="d4">
+    Container Name<input id="cdname" name="cdname" />
+    <button onclick="del()"> Stop container</button></br>
+    <div id="del"></div>
+  </div>
+
+  <button onclick="deleteall()">Delete All</button></br>
+  <div id="deleteall"></div>
+
+  Image Name :<input id="cidelete" name="cidelete" />
+  <button onclick="cidelete()">Delete Image</button>
+  <div id="cido"></div> -->
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-6 col-12">
+        <!-- Area-1 -->
+        <div class="mb-5 card border-primary p-3">
+
+
+
+          <div class="mb-3">
+            <label class="form-label">Enter Image Name:</label>
+            <input type="text" id="cpullos" class="form-control">
+          </div>
+          <div>
+            <button onclick="cpullos()" class="btn btn-primary">Pull Image</button>
+            <button onclick="clear2()" class="btn btn-secondary">Clear</button>
+          </div>
+          <div id="cpullosoutput"> </div>
+
+
+        </div>
+        <!-- Area-2 -->
+        <div>
+          <div class="mb-5 card border-primary p-3">
+
+            <div class="mb-3">
+              <label class="form-label">Name: </label>
+              <input type="text" id="cname" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Image Name: </label>
+              <input type="text" id="cimage" class="form-control">
+            </div>
+            <button onclick="run()" type="button" class="btn btn-primary">Launch Container</button>
+            <div class="my-3">
+              <label class="form-label">Container Id: </label>
+
+              <input type="text" id="containerid" class="form-control" readonly>
+            </div>
+          </div>
+        </div>
+        <!-- Area-3 -->
+        <div>
+          <div class="mb-5 card border-primary p-3">
+            <div class="form-floating">
+              <textarea class="form-control" id="cps" placeholder="Leave a comment here"
+                style="height: 100px"></textarea>
+              <label for="floatingTextarea2"></label>
+            </div>
+
+            <button onclick="cps()" class="btn btn-primary my-2">Show Containers</button>
+
+          </div>
+        </div>
+
+
+
+
+
+
+      </div>
+      <div class="col-md-6 col-12">
+        <div>
+          <div class="mb-5 card border-primary p-3">
+
+
+
+            <div class="mb-3">
+              <label class="form-label">Enter Container Name : </label>
+              <input type="text" id="cdname" class="form-control">
+            </div>
+            <button type="button" onclick="del()" class="btn btn-danger">Stop Container</button>
+            <div id="del"></div>
+
+          </div>
+        </div>
+        <div>
+          <div class="mb-5 card border-danger p-3">
+
+            <div class="mb-3">
+              <label class="form-label">Enter Image Name : </label>
+              <input type="text" id="cidelete" class="form-control border-danger">
+            </div>
+            <div>
+              <button type=button class="btn btn-danger" onclick="cidelete()">Delete Image</button>
+              <button onclick="deleteall()" type="button" class="btn btn-danger">Delete All Images</button>
+            </div>
+            <div id="cido"></div>
+
+          </div>
+
+        </div>
+        <div class="card text-white bg-dark text-center border-dark p-3">
+          <h1 class="card-title">Terminal</h1>
+          <pre><div id="terminal-output"></div></pre>
+          <form>
+            <span>Command: </span>
+            <input id="eterminal-input" type="text" name="cmd" class="mx-2" />
+            <button type="button" class="btn btn-secondary" onclick="sendCommand()">Run</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

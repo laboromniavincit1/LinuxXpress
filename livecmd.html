@@ -1,0 +1,42 @@
+<h1>Live CMD</h1>
+<pre><div id="d1">waiting... </div></pre>
+<form>
+	Command: <input id = "cmd", name="cmd"/>
+	<input type="button" value="run" onclick="send()"/>
+</form>
+
+<script>	
+	function send() {
+	var cmd = document.getElementById("cmd").value;
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("d1").innerHTML =
+    this.responseText;
+  }
+  xhttp.open("GET", "http://localhost:3000/comman?cmd=" + cmd);
+  xhttp.send();
+}
+	
+	//function send()
+	//{
+	//	command=document.getElementById("cmd").value;
+	//	const myhttp= new XMLHttpRequest();
+	//	url="http://35.154.75.150:3000/cmd.py?cmd="+command;
+	//	myhttp.open("GET", url, true)
+	//	myhttp.send();
+	//	myhttp.onreadystatechange = function(){
+	//	if(this.readyState == 4){
+	//	document.getElementById("d1").innerHTML=myhttp.responseText;
+	//	}}
+	//
+</script>
+
+<style>
+#d1{
+border: 2px solid black;
+width:100%;
+height: 50%;
+color: white;
+background-color:black;
+}
+</style>
